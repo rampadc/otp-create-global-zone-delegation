@@ -16,6 +16,7 @@ RUN mv jq /usr/local/bin/jq
 
 RUN rm oc.tar.gz awscliv2.zip
 
+RUN mkdir -p ~/.aws
 COPY delegation-record.json delegation-record.json
 COPY main.sh main.sh
 RUN chmod +x main.sh

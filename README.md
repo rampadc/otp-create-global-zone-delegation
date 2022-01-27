@@ -1,6 +1,6 @@
 # Create Global Zone Delegation job
 
-One Paragraph of project description goes here
+Image output from repo: 
 
 ## Getting Started
 

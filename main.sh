@@ -11,8 +11,11 @@ oc login $apiURL -u $username -p $password --insecure-skip-tls-verify
 echo "---- Getting AWS ID and Key from managed cluster $managedClusterName ----"
 export AWS_ACCESS_KEY_ID=$(oc get secret -n $managedClusterName $managedClusterName-aws-creds -o=jsonpath='{.data.aws_access_key_id}' | base64 --decode)
 export AWS_SECRET_ACCESS_KEY=$(oc get secret -n $managedClusterName $managedClusterName-aws-creds -o=jsonpath='{.data.aws_secret_access_key}' | base64 --decode)
+echo "Access key ID,Secret access key" >> creds.csv
+echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY" >> creds.csv
+
 echo "Using access key $AWS_ACCESS_KEY_ID"
-aws configure
+aws configure import --csv ./creds.csv
 
 echo "---- Configuring route53 based on $managedClusterName's base domain ----"
 
