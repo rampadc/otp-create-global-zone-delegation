@@ -1,4 +1,4 @@
-# Create Global Zone Delegation job
+# Create Global Zone Delegation job for AWS
 
 This job sets up a global zone with AWS Route53 using the base domain for one of the AWS managed cluster.
 Internally, it runs `main.sh` script, accepting the following environment variables:
